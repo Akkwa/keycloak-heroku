@@ -1,5 +1,21 @@
 #!/bin/bash
 
+
+
+if [ "x$JBOSS_MODULES_SYSTEM_PKGS" = "x" ]; then
+   JBOSS_MODULES_SYSTEM_PKGS="org.jboss.byteman"
+fi
+JAVA_OPTS="-Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true"
+JAVA_OPTS="$JAVA_OPTS -Djboss.modules.system.pkgs=$JBOSS_MODULES_SYSTEM_PKGS -Djava.awt.headless=true"
+
+# Here's the added line.
+export JAVA_OPTS="$JAVA_OPTS -Duser.home=/opt/jboss"
+
+
+
+
+
+
 # Set database config from Heroku DATABASE_URL
 if [ "$DATABASE_URL" != "" ]; then
     echo "Found database configuration in DATABASE_URL=$DATABASE_URL"
