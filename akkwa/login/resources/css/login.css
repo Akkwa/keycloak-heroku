@@ -1,7 +1,6 @@
 html, body {
   padding: 0;
   width: 100%;
-  height: 100%;
   background-color: #E5E5E5 !important;
   font-size: 80%;
 } 
@@ -41,7 +40,7 @@ html, body {
 }
 
 @media (max-width: 576px) {
-  div.login-form {
+  div.login-form, div.login-form-scroll {
       width: 100% !important;
   }
   div.login-img {
@@ -51,7 +50,7 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  div.login-form {
+  div.login-form, div.login-form-scroll {
       width: 60%;
   }
   div.login-img {
@@ -63,7 +62,11 @@ html, body {
 }
 div.login-form {
   width: 50%;
-  height: 100%;
+  height: 100vh;
+}
+
+div.login-form-scroll {
+  width: 50%;
 }
 
 div.card-center {
