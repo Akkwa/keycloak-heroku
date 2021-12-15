@@ -1,44 +1,45 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayInfo=false displayMessage=false; section>
-    <#if section = "title">
+    <#if section="title">
         ${msg("updatePasswordTitle")}
     <#elseif section = "form">
-        <div class="container">
-            <div id="loginbox" style="margin-top:100px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                <div class="panel panel-info" >
-                    <div class="panel-heading">
-                        <div class="panel-title">Update Password</div>
-                    </div>
 
-                    <div class="panel-body" >
+        <div class="login-form">
+            <div class="card-center">
+                <div class="card form-card">
+                    <div class="card-body">
+                        <h2 class="title-card mb-5">Atualizar Senha</h2>
+
                         <#if message?has_content>
-                            <div id="login-alert" class="alert alert-warning col-sm-12">
-                                <span class="kc-feedback-text">${message.summary!''}</span>
+                            <div id="login-alert" class="alert alert-danger col-sm-12">
+                                <span class="kc-feedback-text">${kcSanitize(message.summary)?no_esc}</span>
                             </div>
                         </#if>
 
-			<form id="kc-passwd-update-form" class="${properties.kcFormClass!}" action="${url.loginAction}" method="post">
-			    <input type="text" id="username" name="username" value="${username}" autocomplete="username" readonly="readonly" style="display:none;"/>
-			    <input type="password" id="password" name="password" autocomplete="current-password" style="display:none;"/>
+                        <form id="kc-passwd-update-form" class="${properties.kcFormClass!}" 
+                            action="${url.loginAction}" method="post">
 
-		            <div class="${properties.kcInputWrapperClass!}">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				<input type="password" id="password-new" name="password-new" class="${properties.kcInputClass!}" autofocus autocomplete="new-password" placeholder="${msg("passwordNew")}"/>
-			    </div>
+                            <input type="text" id="username" name="username" value="${username}" autocomplete="username" readonly="readonly" style="display:none;"/>
+                            <input type="password" id="password" name="password" autocomplete="current-password" style="display:none;"/>
 
                             <div class="${properties.kcInputWrapperClass!}">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				<input type="password" id="password-confirm" name="password-confirm" class="${properties.kcInputClass!}" autocomplete="new-password" placeholder="${msg("passwordConfirm")}"/>
-			    </div>
+                                <label for="password-new" class="form-label">${msg("passwordNew")}</label>
+                                <input tabindex="2" id="password-new" class="${properties.kcInputClass!}" name="password-new" type="password" autocomplete="new-password"/>
+                            </div>
 
-                            <div id="kc-form-buttons" style="margin-top:10px" class="${properties.kcFormButtonsClass!}">
-                                <div class="${properties.kcFormButtonsWrapperClass!}">
-				    <input class="${properties.kcButtonClass!}" type="submit" value="${msg("doSubmit")}"/>
-				</div>
+                            <div class="${properties.kcInputWrapperClass!}">
+                                <label for="password-confirm" class="form-label">${msg("passwordConfirm")}</label>
+                                <input tabindex="2" id="password-confirm" class="${properties.kcInputClass!}" name="password-confirm" type="password" autocomplete="new-password"/>
+                            </div>
+
+                            <!-- buttons -->
+                            <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                                <input class="${properties.kcButtonClass!}" 
+                                    name="login" id="kc-login" type="submit" value="${msg("doSubmit")}"/>
+                            </div>
+                        </form>
+				    </div>
 			    </div>
-			</form>
-                    </div>
-                </div>
             </div>
         </div>
     </#if>
