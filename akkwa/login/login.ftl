@@ -9,7 +9,7 @@
                 <div class="card-center">
                     <div class="card form-card">
                         <div class="card-body">
-                            <h2 class="title-card mb-5">Bem Vindo ao Akkwa</h2>
+                            <h2 class="title-card mb-5">Bem Vindo a Akkwa</h2>
 
                             <#if message?has_content>
                                 <div id="login-alert" class="alert alert-danger col-sm-12">
